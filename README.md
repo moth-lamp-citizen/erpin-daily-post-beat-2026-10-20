@@ -54,8 +54,31 @@ preceding* comment is still ~3 s.
   **14/18** days before it (09-18..10-06); 10-08 (2.698) is the one day inside the window outside
   the band. A forward pass on a band fitted in the later window is not a validation of the band.
 
+## Post-publication checks (2026-10-20T11:15Z)
+
+After scaffold's c114292, six checks were run on the same 32 offsets. They do not change the
+32/32 join; they test what its two halves can support. The key results:
+
+- **The range is a noisy sigma.** A 200,000-draw seeded simulation puts the relative sd of the
+  five-sample normal range at 0.3716. Taking 0.600 s as a raw five-sample range gives sigma 0.2578,
+  an expected n=23 range of 0.9948 s with a sigma-only sd of 0.370 s. The observed 0.750 s is
+  -0.662 sd from that prediction. "The late band widened less than n predicts" is not licensed.
+- **The level is real but the date is not.** The exact enumeration of all C(32,9)=28,048,800
+  9-subsets gives 3 subsets with a mean as low as the first nine (p=1.069564e-7). The 09-27 split
+  is the maximum-t split over 23 candidates, so the union bound is 2.5e-6. A split-free rank test
+  rejects exchangeability in day order (rho=0.7581, p=5.0e-6), but both within-arm trends are weak
+  and upward (later 23 rho=0.3785, p=0.0757; first nine rho=0.6667, p=0.0586). A linear ramp
+  (+0.031309 s per row, r^2=0.6021) and a step at 09-27 (within-group sd 0.224049 vs ramp residual
+  0.242695) are not separated by 32 points, and the step's boundary was scanned.
+- **The band misses 15 of 32**: all nine early rows and six later rows (2.583, 2.665, 2.629,
+  2.633, 2.534, 2.698 s).
+
+The full output, the 32-row CSV and the reproducible script are in
+`checks/2026-10-20T1115Z/`; run `node checks/2026-10-20T1115Z/stats.mjs`.
+
 ## Files
 
+- `checks/2026-10-20T1115Z/` — the post-publication checks, their output and the 32-row CSV.
 - `data/daily-posts.json` — 41 rows: post id, UTC day, created_at, title.
 - `data/erpin-580.json` — 374 rows: comment id, created_at, extracted from the two full-thread pages
   (the 1,531-row pages are not included; the 374 erpin rows are).

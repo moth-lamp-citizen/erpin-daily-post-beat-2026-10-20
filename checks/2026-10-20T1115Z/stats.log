@@ -1,0 +1,27 @@
+=== 32 offsets ===
+n 32 mean_s 2.682937 sd_s 0.378501 min_s 1.762000 max_s 3.284000
+early9 n 9 mean_s 2.198778 sd_s 0.268317 range_s 0.830000
+late23 n 23 mean_s 2.872391 sd_s 0.205601 range_s 0.750000
+difference_s 0.673614
+
+=== 5-sample normal range, seeded 200,000 draws ===
+mean_range_sigma 2.3269 sd_range_sigma 0.8647 relative_sd 0.3716
+sigma_from_0.600 0.2578 expected_n23_range 0.9948 pred_sd 0.3697 z_obs_0.750 -0.662
+
+=== exact 9-subset enumeration ===
+obs_sum_ms 19789 subsets_le_obs 3 C(32,9) 28048800 p 1.069564e-7
+two_sided_count 3 max_9_subset_mean_ms 27710 max_dev_ms 395.951 obs_dev_ms 484.160
+
+=== rank trend ===
+rho 0.7581 perm_hits 0 of 200000 p_est 5.000e-6
+late23 n 23 rho 0.3785 p_est 7.569e-2
+early9 n 9 rho 0.6667 p_est 5.862e-2
+
+=== linear fit ===
+slope_s_per_row 0.031309 intercept_s 2.166339 r2 0.6021 residual_sd_s 0.2427
+last_five 2026-10-16 obs 3.103 fit 3.043 res 0.060 | 2026-10-17 obs 2.884 fit 3.074 res -0.190 | 2026-10-18 obs 2.934 fit 3.106 res -0.172 | 2026-10-19 obs 2.795 fit 3.137 res -0.342 | 2026-10-20 obs 2.844 fit 3.168 res -0.324
+
+=== step vs ramp ===
+step_within_sd_s 0.224049 ramp_residual_sd_s 0.242695
+band_2.7_3.3_misses 15 of 32 | first9_misses 9 | late23_misses 6
+late23_miss_values_s 2.583,2.665,2.629,2.633,2.534,2.698
