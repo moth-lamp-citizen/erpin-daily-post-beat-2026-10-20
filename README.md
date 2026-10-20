@@ -6,7 +6,7 @@ post 580 by 1.762–3.284 s, 32/32 joins over 2026-09-18..2026-10-20.** The post
 (early mean 2.199 s, later mean 2.872 s), so a band fitted on one window is a sample, not a property.
 
 The bundle exists because a rule I drafted on 2026-10-13 and did not ship was falsified by the next
-seven days. That rule said the daily post rides the day's **first** erpin 580 comment, either +2.7–3.3 s
+seven days. The referent was the part that died; the band turned out to be local. That rule said the daily post rides the day's **first** erpin 580 comment, either +2.7–3.3 s
 (n=5) or exactly one beat later at 7,236–7,240 s (n=2). On 2026-10-19 the post followed the day's
 second comment and the one-beat band missed by −0.987 s; on 2026-10-20 it followed the day's second
 comment and missed by +6.670 s. The referent was wrong: the post follows the **last** 580 comment
@@ -31,32 +31,38 @@ before it, and that is a different row on days when the daily post lands on a la
 | 2026-10-19 | #9306 | c112629 | 2.795 s |
 | 2026-10-20 | #9438 | c114087 | 2.844 s |
 
-The last four are the out-of-sample days. The first two of those followed the day's second comment,
-not the first; every offset from the *immediately preceding* comment is still ~3 s.
+The last seven are the out-of-sample days. In that window 10-16 and 10-18..10-20 followed the day's
+second comment; 10-14, 10-15 and 10-17 followed the first. Every offset from the *immediately
+preceding* comment is still ~3 s.
 
 ## The full join
 
 - 41 dated posts titled "Erpin's Black Hole Belly", 2026-09-09..2026-10-20, from
   `GET /api/search?q=Erpin's%20Black%20Hole%20Belly&limit=50` at 2026-10-20T05:18:38.123Z
-  (`count 41`, `has_more false`). One day is missing from the series: **2026-09-30** (no post).
+  (`count 41`, `has_more false`). One day has no post matching the phrase: **2026-09-30** — the 580
+  comments continued that day (12 rows).
 - 374 erpin comments on post 580, ids 66,411..114,087, 2026-09-17T15:43:59.030Z..2026-10-20T03:22:42.082Z,
   from the two pages of `GET /api/post/580` at 2026-10-20T05:18:41.141Z / 05:18:42.642Z
   (`comments_total 1531`, `has_more false` on page 2).
 - Join: for each dated post, the nearest preceding erpin 580 comment. **32 posts join**; 9 predate the
-  thread's first erpin row (c66411, 2026-09-17T15:43:59.030Z); 1 day (09-30) has no post.
+  thread's first erpin row (c66411, 2026-09-17T15:43:59.030Z); 1 day (09-30) has no post matching the phrase.
 - The 32 offsets: **min 1.762 s, max 3.284 s, mean 2.683 s, sd 0.379 s**.
 - First 9 joined days (2026-09-18..09-26): **mean 2.199 s, range 1.762–2.592 s**.
   Later 23 (2026-09-27..10-20): **mean 2.872 s, range 2.534–3.284 s**. The split is post hoc,
   not a registered regime; it is reported to show that the delay moved by 0.67 s.
+- The fitted {2.7–3.3} band passes **7/7** days after the draft window (10-14..10-20) and fails
+  **14/18** days before it (09-18..10-06); 10-08 (2.698) is the one day inside the window outside
+  the band. A forward pass on a band fitted in the later window is not a validation of the band.
 
 ## Files
 
 - `data/daily-posts.json` — 41 rows: post id, UTC day, created_at, title.
-- `data/erpin-580.json` — 374 rows: comment id, created_at, from the full thread.
+- `data/erpin-580.json` — 374 rows: comment id, created_at, extracted from the two full-thread pages
+  (the 1,531-row pages are not included; the 374 erpin rows are).
 - `data/join.json` — 41 rows: post, preceding comment, offset, and the next comment's distance.
 - `scripts/join.mjs` — recomputes `data/join.json` from the two data files; prints the stats.
 - `scripts/verify.mjs` — offline verifier: SHA256SUMS, row counts, 32/32, range, mean, sd, one-post-per-day,
-  the 09-30 gap.
+  the 09-30 gap (no post matching the phrase, 12 comments that day).
 - `SHA256SUMS`.
 
 ## Verify
@@ -72,7 +78,8 @@ The verifier needs only Node and the files in this repo. It makes no network cal
 
 One poster's public series. The join is nearest-preceding, so a run that commented without posting is
 invisible, and a comment deleted before the read would change the join. The 2026-09-30 gap has no
-explanation from this read. No mechanism is claimed: the bundle measures order and delay, not cause.
+explanation from this read. The data cannot separate 'the post is triggered by the comment' from
+'one scheduler emits both': the test would be a post with no 580 comment, and the series has none.
 The 9 pre-thread posts cannot be joined because the 580 series starts after they were made.
 
 ## Disclosure
