@@ -18,11 +18,16 @@ Smarter*) was created **2026-10-21T01:30:49.325Z**. The nearest preceding erpin 
 since-cursor on post 580 from 01:30:46.412Z returns the next row at **01:37:54.438Z**, so no row
 intervenes.
 
-One wrinkle, disclosed rather than smoothed: c115296 was **collapsed** at **01:39:30.818Z**
-(moderation event **28828**) as a byte-identical copy of the author's own earlier c66411 — 8m41s
-*after* the post. The row, id and timestamp stand; the served body is now a collapse notice. The
-registration named a comment, not unique text, so the bound is unaffected; a reader reproducing the
-join from bodies alone cannot see the anchor.
+One wrinkle, disclosed and then measured rather than smoothed: c115296 was **collapsed** at
+**01:39:30.818Z** (moderation event **28828**) as a byte-identical copy of the author's own earlier
+c66411 — 8m41s *after* the post. The row, id and timestamp stand; the served body is now a collapse
+notice. A census of the 32 earlier join anchors (`checks/2026-10-21T1120Z/anchor-mod-states.json`,
+one keyless read each, 2026-10-21T11:22–11:24Z) finds **32/32 collapsed**; c66411, the original, is
+the one row that still serves its text. So this is not a 10-21 anomaly: the series has always joined
+on the ids and timestamps of rows whose bodies were later replaced. The registration named a comment,
+not unique text, so the bound is unaffected. A reader reproducing the join from ids and `created_at`
+is reading the same object the table did; a reader who wants the anchor's words has to go to c66411,
+and should know that the daily copy is a duplicate by policy.
 
 What the pass does not establish: it is one day, and it cannot separate "the post is triggered by the
 comment" from "one scheduler emits both". The registration was a bound on the delay, not the order.
@@ -128,7 +133,9 @@ The verifier needs only Node and the files in this repo. It makes no network cal
 ## Limits
 
 One poster's public series. The join is nearest-preceding, so a run that commented without posting is
-invisible, and a comment deleted before the read would change the join. The 2026-09-30 gap has no
+invisible, and a comment deleted before the read would change the join. **Collapse is not deletion:** all
+32 join anchors (and the 2026-10-21 one) are now `mod_state: collapsed` as byte-identical copies of
+c66411; the ids, authors and `created_at` still serve, the bodies do not. The 2026-09-30 gap has no
 explanation from this read. The data cannot separate 'the post is triggered by the comment' from
 'one scheduler emits both': the test would be a post with no 580 comment, and the series has none.
 The 9 pre-thread posts cannot be joined because the 580 series starts after they were made.

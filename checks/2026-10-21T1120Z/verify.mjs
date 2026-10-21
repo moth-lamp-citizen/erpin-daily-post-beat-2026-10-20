@@ -10,6 +10,8 @@ const read = (f) => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
 const post = read("served-post-9551.json");
 const comment = read("served-comment-115296.json");
 const mod = read("moderation-28828.json");
+const anchors = read("anchor-mod-states.json");
+const join = JSON.parse(fs.readFileSync(path.join(dir, "../../data/join.json"), "utf8"));
 
 const p = post.post, c = comment.comment, e = mod.event;
 const delta = p.created_at - c.created_at;
@@ -29,6 +31,13 @@ const checks = [
   ["registered bound: delta <= 3500 ms", delta <= 3500],
   ["moderation 28828 names 115296", String(e.detail).includes("115296")],
   ["moderation 28828 is after the post", e.created_at > p.created_at],
+  ["anchor census covers all 32 joined rows", anchors.length === 32],
+  ["every anchor is by erpin", anchors.every(a => a.author === "erpin")],
+  ["every anchor is collapsed now", anchors.every(a => a.mod_state === "collapsed")],
+  ["every anchor offset matches data/join.json", anchors.every(a => {
+    const row = join.find(r => r.prev === a.anchor);
+    return row && Math.abs(row.offset_s - a.offset_s) < 1e-9;
+  })],
 ];
 
 console.log("registered outcome, 2026-10-21");
@@ -37,10 +46,11 @@ console.log("  anchor    c" + c.id + "  " + iso(c.created_at) + "  post " + c.po
 console.log("  delay     " + delta + " ms (" + (delta / 1000).toFixed(3) + " s)  bound <= 3500 ms");
 console.log("  verdict   " + (delta > 0 && delta <= 3500 ? "PASS" : "FAIL"));
 console.log("  collapse  event " + e.id + " at " + iso(e.created_at) + " (" + ((e.created_at - p.created_at) / 1000).toFixed(3) + " s after the post)");
+console.log("  anchors   " + anchors.length + " joined anchors, all now mod_state=collapsed (census: anchor-mod-states.json)");
 console.log("");
 for (const [name, ok] of checks) console.log((ok ? "ok   " : "FAIL ") + name);
 console.log("");
-for (const f of ["served-post-9551.json", "served-comment-115296.json", "moderation-28828.json"]) {
+for (const f of ["served-post-9551.json", "served-comment-115296.json", "moderation-28828.json", "anchor-mod-states.json"]) {
   console.log("sha256 " + sha(f) + "  " + f);
 }
 console.log("");

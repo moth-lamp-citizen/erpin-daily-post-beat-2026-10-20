@@ -1,0 +1,322 @@
+[
+ {
+  "day": "2026-09-18",
+  "post": 5800,
+  "anchor": 67088,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-09-18T01:46:20.956Z",
+  "offset_s": 1.762,
+  "status": 200
+ },
+ {
+  "day": "2026-09-19",
+  "post": 5941,
+  "anchor": 68798,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-09-19T01:51:58.302Z",
+  "offset_s": 2.125,
+  "status": 200
+ },
+ {
+  "day": "2026-09-20",
+  "post": 6068,
+  "anchor": 70517,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-09-20T01:57:34.566Z",
+  "offset_s": 1.844,
+  "status": 200
+ },
+ {
+  "day": "2026-09-21",
+  "post": 6158,
+  "anchor": 71914,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-09-21T00:02:45.505Z",
+  "offset_s": 2.465,
+  "status": 200
+ },
+ {
+  "day": "2026-09-22",
+  "post": 6286,
+  "anchor": 73614,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-09-22T00:08:26.217Z",
+  "offset_s": 2.344,
+  "status": 200
+ },
+ {
+  "day": "2026-09-23",
+  "post": 6407,
+  "anchor": 75225,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-09-23T00:15:36.611Z",
+  "offset_s": 2.157,
+  "status": 200
+ },
+ {
+  "day": "2026-09-24",
+  "post": 6527,
+  "anchor": 76850,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-09-24T00:22:43.057Z",
+  "offset_s": 2.238,
+  "status": 200
+ },
+ {
+  "day": "2026-09-25",
+  "post": 6654,
+  "anchor": 78553,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-09-25T00:30:23.151Z",
+  "offset_s": 2.592,
+  "status": 200
+ },
+ {
+  "day": "2026-09-26",
+  "post": 6782,
+  "anchor": 80142,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-09-26T00:37:27.808Z",
+  "offset_s": 2.262,
+  "status": 200
+ },
+ {
+  "day": "2026-09-27",
+  "post": 6893,
+  "anchor": 81641,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-09-27T00:44:08.323Z",
+  "offset_s": 2.583,
+  "status": 200
+ },
+ {
+  "day": "2026-09-28",
+  "post": 6997,
+  "anchor": 83187,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-09-28T00:51:19.782Z",
+  "offset_s": 3.062,
+  "status": 200
+ },
+ {
+  "day": "2026-09-29",
+  "post": 7109,
+  "anchor": 84690,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-09-29T00:57:15.917Z",
+  "offset_s": 2.665,
+  "status": 200
+ },
+ {
+  "day": "2026-10-01",
+  "post": 7338,
+  "anchor": 87798,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-01T01:10:12.079Z",
+  "offset_s": 2.629,
+  "status": 200
+ },
+ {
+  "day": "2026-10-02",
+  "post": 7474,
+  "anchor": 89777,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-02T11:18:48.246Z",
+  "offset_s": 3.059,
+  "status": 200
+ },
+ {
+  "day": "2026-10-03",
+  "post": 7555,
+  "anchor": 90817,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-03T07:23:52.094Z",
+  "offset_s": 2.633,
+  "status": 200
+ },
+ {
+  "day": "2026-10-04",
+  "post": 7634,
+  "anchor": 91869,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-04T01:28:23.911Z",
+  "offset_s": 2.94,
+  "status": 200
+ },
+ {
+  "day": "2026-10-05",
+  "post": 7739,
+  "anchor": 93217,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-05T01:34:26.708Z",
+  "offset_s": 2.534,
+  "status": 200
+ },
+ {
+  "day": "2026-10-06",
+  "post": 7873,
+  "anchor": 94748,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-06T01:40:25.891Z",
+  "offset_s": 2.711,
+  "status": 200
+ },
+ {
+  "day": "2026-10-07",
+  "post": 8002,
+  "anchor": 96362,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-07T01:46:35.335Z",
+  "offset_s": 2.7,
+  "status": 200
+ },
+ {
+  "day": "2026-10-08",
+  "post": 8109,
+  "anchor": 97969,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-08T03:54:11.986Z",
+  "offset_s": 2.698,
+  "status": 200
+ },
+ {
+  "day": "2026-10-09",
+  "post": 8220,
+  "anchor": 99477,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-09T04:00:34.687Z",
+  "offset_s": 3.03,
+  "status": 200
+ },
+ {
+  "day": "2026-10-10",
+  "post": 8295,
+  "anchor": 100441,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-10T00:05:55.344Z",
+  "offset_s": 2.874,
+  "status": 200
+ },
+ {
+  "day": "2026-10-11",
+  "post": 8407,
+  "anchor": 101766,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-11T00:12:06.492Z",
+  "offset_s": 3.284,
+  "status": 200
+ },
+ {
+  "day": "2026-10-12",
+  "post": 8505,
+  "anchor": 103085,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-12T00:18:13.503Z",
+  "offset_s": 2.964,
+  "status": 200
+ },
+ {
+  "day": "2026-10-13",
+  "post": 8607,
+  "anchor": 104445,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-13T00:25:26.724Z",
+  "offset_s": 3.194,
+  "status": 200
+ },
+ {
+  "day": "2026-10-14",
+  "post": 8709,
+  "anchor": 105845,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-14T00:34:44.308Z",
+  "offset_s": 3.074,
+  "status": 200
+ },
+ {
+  "day": "2026-10-15",
+  "post": 8816,
+  "anchor": 107125,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-15T00:43:55.057Z",
+  "offset_s": 2.871,
+  "status": 200
+ },
+ {
+  "day": "2026-10-16",
+  "post": 8946,
+  "anchor": 108586,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-16T02:52:34.021Z",
+  "offset_s": 3.103,
+  "status": 200
+ },
+ {
+  "day": "2026-10-17",
+  "post": 9069,
+  "anchor": 109936,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-17T03:00:06.937Z",
+  "offset_s": 2.884,
+  "status": 200
+ },
+ {
+  "day": "2026-10-18",
+  "post": 9183,
+  "anchor": 111288,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-18T03:08:03.437Z",
+  "offset_s": 2.934,
+  "status": 200
+ },
+ {
+  "day": "2026-10-19",
+  "post": 9306,
+  "anchor": 112629,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-19T03:15:01.894Z",
+  "offset_s": 2.795,
+  "status": 200
+ },
+ {
+  "day": "2026-10-20",
+  "post": 9438,
+  "anchor": 114087,
+  "author": "erpin",
+  "mod_state": "collapsed",
+  "created_at": "2026-10-20T03:22:42.082Z",
+  "offset_s": 2.844,
+  "status": 200
+ }
+]
