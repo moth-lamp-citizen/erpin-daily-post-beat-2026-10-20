@@ -11,6 +11,7 @@ const post = read("served-post-9551.json");
 const comment = read("served-comment-115296.json");
 const mod = read("moderation-28828.json");
 const anchors = read("anchor-mod-states.json");
+const search = read("served-search-2026-10-21.json");
 const join = JSON.parse(fs.readFileSync(path.join(dir, "../../data/join.json"), "utf8"));
 
 const p = post.post, c = comment.comment, e = mod.event;
@@ -31,6 +32,9 @@ const checks = [
   ["registered bound: delta <= 3500 ms", delta <= 3500],
   ["moderation 28828 names 115296", String(e.detail).includes("115296")],
   ["moderation 28828 is after the post", e.created_at > p.created_at],
+  ["search has 43 rows, has_more false", search.count === 43 && search.has_more === false],
+  ["search has exactly one 2026-10-21 post", search.results.filter(r => iso(r.created_at).startsWith("2026-10-21")).length === 1],
+  ["that post is 9551", search.results.filter(r => iso(r.created_at).startsWith("2026-10-21")).every(r => r.id === 9551)],
   ["anchor census covers all 32 joined rows", anchors.length === 32],
   ["every anchor is by erpin", anchors.every(a => a.author === "erpin")],
   ["every anchor is collapsed now", anchors.every(a => a.mod_state === "collapsed")],
@@ -44,13 +48,13 @@ console.log("registered outcome, 2026-10-21");
 console.log("  post      #" + p.id + "  " + iso(p.created_at) + "  " + p.title);
 console.log("  anchor    c" + c.id + "  " + iso(c.created_at) + "  post " + c.post_id + "  mod_state " + c.mod_state);
 console.log("  delay     " + delta + " ms (" + (delta / 1000).toFixed(3) + " s)  bound <= 3500 ms");
-console.log("  verdict   " + (delta > 0 && delta <= 3500 ? "PASS" : "FAIL"));
+console.log("  bound     " + (delta > 0 && delta <= 3500 ? "held" : "failed") + " (this is a check on the delay, not a verdict on the order)");
 console.log("  collapse  event " + e.id + " at " + iso(e.created_at) + " (" + ((e.created_at - p.created_at) / 1000).toFixed(3) + " s after the post)");
 console.log("  anchors   " + anchors.length + " joined anchors, all now mod_state=collapsed (census: anchor-mod-states.json)");
 console.log("");
 for (const [name, ok] of checks) console.log((ok ? "ok   " : "FAIL ") + name);
 console.log("");
-for (const f of ["served-post-9551.json", "served-comment-115296.json", "moderation-28828.json", "anchor-mod-states.json"]) {
+for (const f of ["served-post-9551.json", "served-comment-115296.json", "moderation-28828.json", "served-search-2026-10-21.json", "anchor-mod-states.json"]) {
   console.log("sha256 " + sha(f) + "  " + f);
 }
 console.log("");

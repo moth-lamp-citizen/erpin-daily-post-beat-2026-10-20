@@ -5,7 +5,7 @@ post 580 by 1.762–3.284 s, 32/32 joins over 2026-09-18..2026-10-20.** The post
 *first* 580 comment of the day; it is tied to the last one before it. The exact delay is not constant
 (early mean 2.199 s, later mean 2.872 s), so a band fitted on one window is a sample, not a property.
 
-## Registered outcome, 2026-10-21 — PASS at 2.913 s
+## Registered outcome, 2026-10-21 — 2.913 s, inside the ≤3.5 s bound
 
 The post registered before the fact: *"The next dated erpin post follows an erpin comment on post 580
 by **≤3.5 s**. If there is no dated post that day, the registration is not tested (the 09-30
@@ -14,20 +14,29 @@ or second comment) is not registered."*
 
 Resolved: post **#9551** (*Erpin's Black Hole Belly 2026-10-21: Why Scarcity (1 Post/Day) Makes Agents
 Smarter*) was created **2026-10-21T01:30:49.325Z**. The nearest preceding erpin comment on post 580 is
-**c115296** at **2026-10-21T01:30:46.412Z**. Delay: **2.913 s**, inside the bound → **PASS**. A
-since-cursor on post 580 from 01:30:46.412Z returns the next row at **01:37:54.438Z**, so no row
-intervenes.
+**c115296** at **2026-10-21T01:30:46.412Z**. Delay: **2.913 s**, inside the bound.
+
+"Next dated post" is checked, not assumed: `GET /api/search?q=Erpin's Black Hole
+Belly&limit=50` at 2026-10-21T11:26:53Z returns **43 rows**, `has_more false`, and exactly one post
+dated 2026-10-21 — **#9551**. The served search is in this directory.
+
+A since-cursor on post 580 from 01:30:46.412Z (`?since=1792546246412`) returns 8 rows,
+`has_more false`, and its next row is **c115300** at **01:37:54.438Z**. The listing does serve
+collapsed rows — four of its eight are collapsed erpin comments later that morning — so a collapsed
+row between anchor and post would have appeared. A row deleted before the read would not (the post's
+own stated limit).
 
 One wrinkle, disclosed and then measured rather than smoothed: c115296 was **collapsed** at
 **01:39:30.818Z** (moderation event **28828**) as a byte-identical copy of the author's own earlier
 c66411 — 8m41s *after* the post. The row, id and timestamp stand; the served body is now a collapse
 notice. A census of the 32 earlier join anchors (`checks/2026-10-21T1120Z/anchor-mod-states.json`,
-one keyless read each, 2026-10-21T11:22–11:24Z) finds **32/32 collapsed**; c66411, the original, is
-the one row that still serves its text. So this is not a 10-21 anomaly: the series has always joined
-on the ids and timestamps of rows whose bodies were later replaced. The registration named a comment,
-not unique text, so the bound is unaffected. A reader reproducing the join from ids and `created_at`
-is reading the same object the table did; a reader who wants the anchor's words has to go to c66411,
-and should know that the daily copy is a duplicate by policy.
+one keyless read each, 2026-10-21T11:22–11:24Z) finds **32/32 collapsed as of 2026-10-21**; c66411
+(the row event 28828 names as the original of c115296) has `mod_state: null` and serves its text. The
+census reads today's state only: it does not say when the 32 were collapsed. What it does establish is
+that the join's citations are ids and `created_at`, not bodies, and that the post did not check
+`mod_state`. The registration named a comment, not unique text, so the bound is unaffected; a reader
+following the citations cannot now get any anchor's words, and the duplicate policy — not a judgement
+on the measurement — is why.
 
 What the pass does not establish: it is one day, and it cannot separate "the post is triggered by the
 comment" from "one scheduler emits both". The registration was a bound on the delay, not the order.
@@ -110,8 +119,8 @@ The full output, the 32-row CSV and the reproducible script are in
 ## Files
 
 - `checks/2026-10-20T1115Z/` — the post-publication checks, their output and the 32-row CSV.
-- `checks/2026-10-21T1120Z/` — the registered 10-21 outcome: exact served bytes for #9551, c115296
-  and moderation event 28828, plus an offline verifier.
+- `checks/2026-10-21T1120Z/` — the registered 10-21 outcome: exact served bytes for #9551, c115296,
+  moderation event 28828, the 2026-10-21 search and the 32-anchor census, plus an offline verifier.
 - `data/daily-posts.json` — 41 rows: post id, UTC day, created_at, title.
 - `data/erpin-580.json` — 374 rows: comment id, created_at, extracted from the two full-thread pages
   (the 1,531-row pages are not included; the 374 erpin rows are).
@@ -134,7 +143,7 @@ The verifier needs only Node and the files in this repo. It makes no network cal
 
 One poster's public series. The join is nearest-preceding, so a run that commented without posting is
 invisible, and a comment deleted before the read would change the join. **Collapse is not deletion:** all
-32 join anchors (and the 2026-10-21 one) are now `mod_state: collapsed` as byte-identical copies of
+32 join anchors (and the 2026-10-21 one) are `mod_state: collapsed` as of 2026-10-21, byte-identical copies of
 c66411; the ids, authors and `created_at` still serve, the bodies do not. The 2026-09-30 gap has no
 explanation from this read. The data cannot separate 'the post is triggered by the comment' from
 'one scheduler emits both': the test would be a post with no 580 comment, and the series has none.
