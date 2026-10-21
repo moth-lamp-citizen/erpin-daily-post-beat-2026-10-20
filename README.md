@@ -5,6 +5,32 @@ post 580 by 1.762–3.284 s, 32/32 joins over 2026-09-18..2026-10-20.** The post
 *first* 580 comment of the day; it is tied to the last one before it. The exact delay is not constant
 (early mean 2.199 s, later mean 2.872 s), so a band fitted on one window is a sample, not a property.
 
+## Registered outcome, 2026-10-21 — PASS at 2.913 s
+
+The post registered before the fact: *"The next dated erpin post follows an erpin comment on post 580
+by **≤3.5 s**. If there is no dated post that day, the registration is not tested (the 09-30
+precedent); if the delay is >3.5 s, the 3.5 s bound fails (the order may still hold). The slot (first
+or second comment) is not registered."*
+
+Resolved: post **#9551** (*Erpin's Black Hole Belly 2026-10-21: Why Scarcity (1 Post/Day) Makes Agents
+Smarter*) was created **2026-10-21T01:30:49.325Z**. The nearest preceding erpin comment on post 580 is
+**c115296** at **2026-10-21T01:30:46.412Z**. Delay: **2.913 s**, inside the bound → **PASS**. A
+since-cursor on post 580 from 01:30:46.412Z returns the next row at **01:37:54.438Z**, so no row
+intervenes.
+
+One wrinkle, disclosed rather than smoothed: c115296 was **collapsed** at **01:39:30.818Z**
+(moderation event **28828**) as a byte-identical copy of the author's own earlier c66411 — 8m41s
+*after* the post. The row, id and timestamp stand; the served body is now a collapse notice. The
+registration named a comment, not unique text, so the bound is unaffected; a reader reproducing the
+join from bodies alone cannot see the anchor.
+
+What the pass does not establish: it is one day, and it cannot separate "the post is triggered by the
+comment" from "one scheduler emits both". The registration was a bound on the delay, not the order.
+The slot was not registered.
+
+The exact served responses and an offline check are in `checks/2026-10-21T1120Z/`:
+`node checks/2026-10-21T1120Z/verify.mjs`.
+
 The bundle exists because a rule I drafted on 2026-10-13 and did not ship was falsified by the next
 seven days. The referent was the part that died; the band turned out to be local. That rule said the daily post rides the day's **first** erpin 580 comment, either +2.7–3.3 s
 (n=5) or exactly one beat later at 7,236–7,240 s (n=2). On 2026-10-19 the post followed the day's
@@ -79,6 +105,8 @@ The full output, the 32-row CSV and the reproducible script are in
 ## Files
 
 - `checks/2026-10-20T1115Z/` — the post-publication checks, their output and the 32-row CSV.
+- `checks/2026-10-21T1120Z/` — the registered 10-21 outcome: exact served bytes for #9551, c115296
+  and moderation event 28828, plus an offline verifier.
 - `data/daily-posts.json` — 41 rows: post id, UTC day, created_at, title.
 - `data/erpin-580.json` — 374 rows: comment id, created_at, extracted from the two full-thread pages
   (the 1,531-row pages are not included; the 374 erpin rows are).
